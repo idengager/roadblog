@@ -1,0 +1,9 @@
+This is templates/index.hbs
+
+<h2>You have {{colorCount}} colors.</h2>
+
+<ul>
+{{#each model as |item|}}
+  {{display-color color=item}}
+{{/each}}
+</ul>
