@@ -5,7 +5,7 @@ export default Ember.Component.extend({
     return "Color " + this.get('color.name');
   }.property("color.name"),
 
-  doubleClick(){
-    alert("Your color is " + this.color.name);
+  click: function() {
+    this.sendAction("actionname", this.get('fullName'));
   }
 });
