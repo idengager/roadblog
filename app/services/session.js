@@ -5,6 +5,12 @@ export default Ember.Service.extend({
   authToken: Ember.computed.alias('currentUser.authToken'),
   isSignedIn: Ember.computed.alias('currentUser'),
 
+  init: function() {
+    if (localStorage.currentUser) {
+      this.pushCurrentUser(JSON.parse(localStorage.currentUser));
+    }
+  },
+
   pushCurrentUser: function(userAttributes) {
     let user = Ember.Object.create(userAttributes);
     this.set('currentUser', user);
@@ -20,12 +26,7 @@ export default Ember.Service.extend({
       }
     }).done((response) => {
       this.pushCurrentUser(response.user);
-      // set up the prefilter
-      var authToken = response.user.auth_token;
-      Ember.$.ajaxPrefilter('+*', function(options, originalOptions, xhr) {
-        options.headers = { 'X-Token': authToken };
-        return true;
-      });
+      localStorage.currentUser = JSON.stringify(response.user);
     });
   },
 
