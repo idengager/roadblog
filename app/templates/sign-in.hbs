@@ -1,0 +1,12 @@
+<form {{action 'submit' username password on='submit'}}>
+  <h2>Please sign in</h2>
+  <label for="username">username</label>
+  {{input id="username" type="text" placeholder="username" required='required' autofocus='autofocus' value=username}}
+  <label for="password">password</label>
+  {{input id="password" type="password" placeholder="password" required='required' value=password}}
+
+  {{#if errorMessage}}
+    <div style="color: red;">{{errorMessage}}</div>
+  {{/if}}
+  <button type="submit">Sign in</button>
+</form>
