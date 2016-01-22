@@ -2,3 +2,5 @@
 <p>{{input value=model.title}}</p>
 <p>{{textarea value=model.body}}</p>
 <button {{action 'save' model}}>Save</button>
+
+<p>Back to {{#link-to "posts.index"}}posts{{/link-to}}.</p>
