@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 
       session.create(username, password).done(() => {
         this.set('controller.errorMessage', false);
-        this.transitionTo('index');
+        this.transitionTo('posts');
       }).fail(() => {
         this.set('controller.errorMessage', "Invalid username or password!");
       });
