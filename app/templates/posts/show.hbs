@@ -1,5 +1,10 @@
 <h3>{{model.title}}</h3>
 <p>{{model.body}}</p>
 <div>{{model.createdAt}}</div>
+<ul>
+{{#each model.comments as |comment|}}
+  <li>{{comment.body}} @ {{comment.createdAt}}</li>
+{{/each}}
+</ul>
 
  <p>Back to {{#link-to "posts.index"}}posts{{/link-to}}.</p>

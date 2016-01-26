@@ -5,4 +5,5 @@ export default DS.Model.extend({
   body: DS.attr('string'),
   createdAt: DS.attr('string'),
   updatedAt: DS.attr('string'),
+  comments: DS.hasMany('comment')
 });
