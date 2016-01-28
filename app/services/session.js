@@ -32,6 +32,7 @@ export default Ember.Service.extend({
   },
 
   destroy: function() {
+    localStorage.removeItem('currentUser');
     this.set('currentUser', false);
   }
 });
