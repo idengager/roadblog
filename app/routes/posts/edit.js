@@ -9,4 +9,4 @@ export default Roadblog.AuthenticatedRoute.extend({
       model.save().then(() => this.transitionTo('posts.index'));
     }
   }
-})
+});

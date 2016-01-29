@@ -3,7 +3,7 @@ import AuthenticatedRoute from './authenticated-route';
 
 export default Roadblog.AuthenticatedRoute.extend({
   session: Ember.inject.service('session'),
-  
+
   model: function() {
     return this.store.createRecord('post', {});
   },
@@ -13,4 +13,4 @@ export default Roadblog.AuthenticatedRoute.extend({
       model.save().then(() => this.transitionTo('posts.index'));
     }
   }
-})
+});

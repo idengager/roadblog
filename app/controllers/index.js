@@ -1,4 +1,4 @@
-import 'ember'
+import Ember from 'ember';
 
 export default Ember.Controller.extend({
   colorCount: Ember.computed("model.[]", function() {
