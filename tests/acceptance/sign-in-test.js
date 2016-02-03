@@ -10,10 +10,7 @@ test('visiting /sing-in', function(assert) {
 
 test('valid credentials', function(assert) {
   visit('/sign-in');
-  andThen(() => assert.equal(currentURL(), '/sign-in'));
 
-  fillIn('input#username', 'admin');
-  fillIn('input#password', 'password');
   click('button:submit');
   andThen(() => assert.equal(currentURL(), '/posts'));
 });
@@ -21,8 +18,10 @@ test('valid credentials', function(assert) {
 test('invalid credentials', function(assert) {
   visit('/sign-in');
 
-  fillIn('input#username', 'test');
-  fillIn('input#password', 'test');
   click('button:submit');
-  andThen(() => assert.equal(currentURL(), '/sign-in'));
+  andThen(() => {
+    assert.equal(currentURL(), '/sign-in');
+    assert.equal(findWithAssert('.error-message'), true);
+    assert.equal(find('.error-message').text(), 'Invalid username or password!');
+  });
 });
