@@ -7,12 +7,16 @@ export default Ember.Route.extend({
     submit(username, password) {
       let session = this.get('session');
 
-      session.create(username, password).done(() => {
-        this.set('controller.errorMessage', false);
-        this.transitionTo('posts');
-      }).fail(() => {
-        this.set('controller.errorMessage', "Invalid username or password!");
-      });
+      session.create(username, password).then(() => {
+        Ember.run(() => {
+          this.set('controller.errorMessage', false);
+          this.transitionTo('posts');
+        });
+      }, (() =>
+        Ember.run(() => {
+          this.set('controller.errorMessage', "Invalid username or password!");
+        }
+      ));
     }
   }
 });
