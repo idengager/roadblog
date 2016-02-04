@@ -1,10 +1,10 @@
-export default function() {};
+export default function() {}
 
 export function testConfig() {
 
   this.post('/auth_token', function() {
     return {
-      "user":{"id":1,"username":"admin","auth_token":"oRtSgV5asyHYB2ZuxLYayWfK"}
+      'user':{'id':1,'username':'admin','auth_token':'oRtSgV5asyHYB2ZuxLYayWfK'}
     };
   }, 201);
 
@@ -13,7 +13,7 @@ export function testConfig() {
   this.get('/posts', function() {
     return {
       posts: [
-        {id: 1, title: "Meh"}
+        {id: 1, title: 'Meh'}
       ]
     };
   });

@@ -4,7 +4,7 @@ export default Ember.Service.extend({
   currentUser: false,
   authToken: Ember.computed.alias('currentUser.authToken'),
   isSignedIn: Ember.computed.alias('currentUser'),
-  attemptedTransition: "",
+  attemptedTransition: '',
 
   init: function() {
     if (localStorage.currentUser) {

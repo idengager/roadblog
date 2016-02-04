@@ -14,8 +14,8 @@ export default Ember.Route.extend({
         });
       }, (() =>
         Ember.run(() => {
-          this.set('controller.errorMessage', "Invalid username or password!");
-        }
+          this.set('controller.errorMessage', 'Invalid username or password!');
+        })
       ));
     }
   }
