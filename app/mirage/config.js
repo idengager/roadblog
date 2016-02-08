@@ -10,13 +10,30 @@ export function testConfig() {
 
   // this.post('/auth_token', { message: 'unauthorized' }, 401);
 
-  this.get('/posts', function() {
-    return {
-      posts: [
-        {id: 1, title: 'Meh'}
-      ]
-    };
-  });
+  // this.get('/posts', function() {
+  //   return {
+  //     posts: [
+  //       {id: 1, title: 'Meh'}
+  //     ]
+  //   };
+  // });
+  this.get('/posts');
+
+
+  // this.get('/posts', function(db, request) {
+  //   return new Mirage.Response(400, {a: 'header'}, {message: 'title cannot be blank'});
+  // });
+
+  // this.post('/api/messages', function(db, request) {
+  //   var params = JSON.parse(request.requestBody).message;
+  //
+  //   if (!params.title) {
+  //     return new Mirage.Response(400, {a: 'header'}, {message: 'title cannot be blank'});
+  //   } else {
+  //     return db.messages.insert(params);
+  //   }
+  // });
+
 
 
   // These comments are here to help you get started. Feel free to delete them.
