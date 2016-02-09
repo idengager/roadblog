@@ -5,7 +5,7 @@ import moduleForAcceptance from 'roadblog/tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | posts');
 
 test('visiting /posts', function(assert) {
-  authenticateSession(Roadblog);
+  authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts');
 
@@ -16,14 +16,36 @@ test('visiting /posts', function(assert) {
 });
 
 test('visiting /posts/:id/', function(assert) {
-  let posts = server.createList(3);
-  authenticateSession(Roadblog);
+  server.createList('post', 3);
+  authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts');
-  console.log(posts[0]);
-  click('a:contains(posts[0].title)');
+  click('ul li a:first');
 
   andThen(function() {
     assert.equal(currentURL(), '/posts/1');
+  });
+});
+
+test('visiting /posts/:id/edit', function(assert) {
+  server.createList('post', 3);
+  authenticateSession(Roadblog, { user: { auth_token: '1234' }});
+
+  visit('/posts');
+  click('ul li a:contains(edit):first');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/posts/1/edit');
+  });
+});
+
+test('visiting /posts/new', function(assert) {
+  authenticateSession(Roadblog, { user: { auth_token: '1234' }});
+
+  visit('/posts');
+  click('a:contains(New post)');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/posts/new');
   });
 });
