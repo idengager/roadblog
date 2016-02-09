@@ -18,6 +18,10 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'sign-in',
+    routeIfAlreadyAuthenticated: 'posts'
+  };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

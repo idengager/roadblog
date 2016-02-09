@@ -9,6 +9,12 @@ test('visiting /sing-in', function(assert) {
 });
 
 test('valid credentials', function(assert) {
+  server.post('/auth_token', function() {
+    return {
+      'user':{'id':1,'username':'admin','auth_token':'oRtSgV5asyHYB2ZuxLYayWfK'}
+    };
+  }, 201);
+  
   visit('/sign-in');
 
   fillIn('input#username', 'admin');
@@ -21,6 +27,8 @@ test('valid credentials', function(assert) {
 });
 
 test('invalid credentials', function(assert) {
+  server.post('/auth_token', { message: 'unauthorized' }, 401);
+
   visit('/sign-in');
 
   fillIn('input#username', 'test');

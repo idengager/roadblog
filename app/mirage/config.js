@@ -2,11 +2,11 @@ export default function() {}
 
 export function testConfig() {
 
-  this.post('/auth_token', function() {
-    return {
-      'user':{'id':1,'username':'admin','auth_token':'oRtSgV5asyHYB2ZuxLYayWfK'}
-    };
-  }, 201);
+  // this.post('/auth_token', function() {
+  //   return {
+  //     'user':{'id':1,'username':'admin','auth_token':'oRtSgV5asyHYB2ZuxLYayWfK'}
+  //   };
+  // }, 201);
 
   // this.post('/auth_token', { message: 'unauthorized' }, 401);
 
