@@ -27,6 +27,16 @@ test('visiting /posts/:id/', function(assert) {
   });
 });
 
+test('trying to access a non-existent post show page', function(assert) {
+  authenticateSession(Roadblog, { user: { auth_token: '1234' }});
+
+  visit('/posts/non-existent');
+  andThen(function() {
+    assert.equal(currentURL(), '/posts/non-existent');
+    findWithAssert('div.error-message');
+  });
+});
+
 test('visiting /posts/:id/edit', function(assert) {
   server.createList('post', 3);
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
