@@ -2,7 +2,7 @@
 
 <ul>
 {{#each model as |post|}}
-  <li>{{#link-to "posts.show" post}}{{post.title}}{{/link-to}} {{#link-to "posts.edit" post}}(edit){{/link-to}} -- {{post.body}} -- {{post.createdAt}}</li>
+  <li>{{#link-to "posts.show" post}}{{post.title}}{{/link-to}} {{#link-to "posts.edit" post}}(edit){{/link-to}} -- {{post.body}} -- {{moment-from-now post.createdAt}}</li>
 {{/each}}
 </ul>
 

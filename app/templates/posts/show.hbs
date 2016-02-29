@@ -1,9 +1,9 @@
 <h3>{{model.title}}</h3>
 <p>{{model.body}}</p>
-<div>{{model.createdAt}}</div>
+<div>Posted {{moment-from-now model.createdAt}}</div>
 <ul>
 {{#each model.comments as |comment|}}
-  <li>{{comment.body}} @ {{comment.createdAt}}</li>
+  <li>{{comment.body}} posted {{moment-from-now comment.createdAt}}</li>
 {{/each}}
 </ul>
 
