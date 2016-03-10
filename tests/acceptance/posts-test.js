@@ -4,7 +4,15 @@ import moduleForAcceptance from 'roadblog/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | posts');
 
-test('visiting /posts', function(assert) {
+test('visiting /posts when not signed in redirects to sign in form', (assert) => {
+  visit('/posts');
+
+  andThen(() => {
+    assert.equal(currentURL(), '/sign-in')
+  });
+});
+
+test('visiting /posts when signed in', function(assert) {
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts');
