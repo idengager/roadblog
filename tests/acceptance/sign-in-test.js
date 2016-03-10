@@ -1,5 +1,5 @@
 import { test } from 'qunit';
-import { authenticateSession, invalidateSession } from 'roadblog/tests/helpers/ember-simple-auth';
+import { currentSession, authenticateSession, invalidateSession } from 'roadblog/tests/helpers/ember-simple-auth';
 import moduleForAcceptance from 'roadblog/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | sign-in');
@@ -57,9 +57,6 @@ test('signing out', (assert) => {
   click('a:contains(Sign out)');
   andThen(() => {
     assert.equal(currentURL(), '/sign-in');
-    // TODO
-    // check if session is invalidated
-    // the following doesn't work
-    // assert.equal(currentSession(Roadblog).get(isAuthenticated), false);
+    assert.equal(currentSession(Roadblog).get("isAuthenticated"), false);
   });
 });
