@@ -1,5 +1,6 @@
 import { test } from 'qunit';
 import { currentSession, authenticateSession, invalidateSession } from 'roadblog/tests/helpers/ember-simple-auth';
+import { authenticateSession } from 'roadblog/tests/helpers/ember-simple-auth';
 import moduleForAcceptance from 'roadblog/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | posts');
