@@ -12,58 +12,58 @@ test('visiting /posts when not signed in redirects to sign in form', (assert) =>
   });
 });
 
-test('visiting /posts when signed in', function(assert) {
+test('visiting /posts when signed in', (assert) => {
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), '/posts');
     findWithAssert('h2#title');
   });
 });
 
-test('visiting /posts/:id/', function(assert) {
+test('visiting /posts/:id/', (assert) => {
   server.createList('post', 3);
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts');
   click('ul li a:first');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), '/posts/1');
   });
 });
 
-test('trying to access a non-existent post show page', function(assert) {
+test('trying to access a non-existent post show page', (assert) => {
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts/non-existent');
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), '/posts/non-existent');
     findWithAssert('div.error-message');
   });
 });
 
-test('visiting /posts/:id/edit', function(assert) {
+test('visiting /posts/:id/edit', (assert) => {
   server.createList('post', 3);
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts');
   click('ul li a:contains(edit):first');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), '/posts/1/edit');
   });
 });
 
-test('visiting /posts/new', function(assert) {
+test('visiting /posts/new', (assert) => {
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts');
   click('a:contains(New post)');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), '/posts/new');
   });
 });

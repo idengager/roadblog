@@ -4,15 +4,15 @@ import moduleForAcceptance from 'roadblog/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | sign-in');
 
-test('visiting /sign-in', function(assert) {
+test('visiting /sign-in', (assert) => {
   invalidateSession(Roadblog);
   visit('/sign-in');
 
   andThen(() => assert.equal(currentURL(), '/sign-in'));
 });
 
-test('signing in with valid credentials', function(assert) {
-  server.post('/auth_token', function() {
+test('signing in with valid credentials', (assert) => {
+  server.post('/auth_token', () => {
     return {
       'user':{'id':1,'username':'admin','auth_token':'oRtSgV5asyHYB2ZuxLYayWfK'}
     };
@@ -28,7 +28,7 @@ test('signing in with valid credentials', function(assert) {
   });
 });
 
-test('signing in with invalid credentials', function(assert) {
+test('signing in with invalid credentials', (assert) => {
   server.post('/auth_token', { message: 'unauthorized' }, 401);
   visit('/sign-in');
 
@@ -42,14 +42,14 @@ test('signing in with invalid credentials', function(assert) {
   });
 });
 
-test('redirecting to /posts when already signed in', function(assert) {
+test('redirecting to /posts when already signed in', (assert) => {
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
   visit('/sign-in');
 
   andThen(() => assert.equal(currentURL(), '/posts'));
 });
 
-test('signing out', function(assert) {
+test('signing out', (assert) => {
   authenticateSession(Roadblog, { user: { auth_token: '1234' }});
 
   visit('/posts');
